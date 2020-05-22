@@ -26,7 +26,6 @@
 */
 
 
-
 /**
  * End Helper Functions
  * Begin Main Functions
@@ -34,6 +33,13 @@
 */
 
 // build the nav
+//   ui component classes: navbar__menu and navbar__list in header...
+//   structure
+//         hero: header: main__hero
+//         sections: <no classes>
+//             id="section1" data-nav="Section 1" class="your-active-class"
+//             id="section2" data-nav="Section 2"
+//   could put into an array, but could also just re-code the webpage...
 
 
 // Add class 'active' to section when near top of viewport
@@ -48,10 +54,13 @@
  * 
 */
 
-// Build menu 
-
-// Scroll to section on link click
-
-// Set sections as active
-
-
+document.addEventListener('DOMContentLoaded', (event) => {
+    // Build menu 
+    
+    // Scroll to section on link click
+    
+    // Set sections as active
+    
+    
+    console.log('Hello Punk!')
+});
