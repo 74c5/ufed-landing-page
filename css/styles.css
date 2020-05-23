@@ -19,6 +19,15 @@ body {
 }
 
 
+/* ---- utility classes ---- */
+.hidden {
+    display: none;
+}
+
+.invisible {
+    opacity: 0;
+}
+
 /* Typeography General*/
 h1 {
     font-family: 'Fira Sans', sans-serif;
@@ -50,8 +59,8 @@ main {
     margin: 10vh 1em 10vh;
 }
 
-.main-hero {
-    min-height: 40vh;
+.main__hero {
+    min-height: 100vh;
     padding-top: 3em;
 }
 
@@ -65,9 +74,12 @@ section {
 
 /* Navigation Styles*/
 .navbar__menu ul {
-    padding-left: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    text-align: center;
     margin: 0;
-    text-align: right;
+    padding-left: 0;
 }
 
 .navbar__menu li {
@@ -194,18 +206,19 @@ section:nth-of-type(3n + 1) .landing__container::after {
 /* Section Active Styles */
 /* Note: your-active-class class is applied through javascript. You should update the class here and in the index.html to what you set in your javascript file.  */
 section.your-active-class {
+    border: 1px solid red;
     background: rgb(0, 0, 0);
     background: linear-gradient(0deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 100%);
 }
 
 section.your-active-class .landing__container::before {
     opacity: 1;
-    animation: rotate 4s linear 0s infinite forwards;
+    animation: rotate 4s linear 2s infinite forwards;
 }
 
 section.your-active-class .landing__container::after {
     opacity: 1;
-    animation: rotate 5s linear 0s infinite forwards reverse;
+    animation: rotate 5s linear 3s infinite forwards reverse;
 }
 
 /* Section Active Styles Keyframe Animations */
