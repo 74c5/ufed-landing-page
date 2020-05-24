@@ -50,12 +50,14 @@ const build_navigation = () => {
     let nav_html = `<li><a href="#" data-index="0" class="menu__link">home</a></li>`;
     navigation.positions.push({});
     for (let i = 1; i < navigation.nodes.length; i++) {
-        nav_html += `<li><a href="#${navigation.nodes[i].id}" data-index="i" class="menu__link">${navigation.nodes[i].dataset['nav']}</a></li>`;
+        nav_html += `<li><a href="#${navigation.nodes[i].id}" data-index="${i}" class="menu__link">${navigation.nodes[i].dataset['nav']}</a></li>`;
         navigation.positions.push({});
     }
 
     nav_list.innerHTML = nav_html;
     nav.classList.remove('invisible');
+
+    return nav;
 };
 
 /** call back for scroll event to determine which sections currently has focus */
@@ -65,6 +67,8 @@ const determine_focus = (event) => {
 
     //The vertical window range is 0..vp_height
     const vp_height = window.clientHeight || document.documentElement.clientHeight;
+    const zone_top = Math.floor(vp_height / 4);
+    const zone_bottom = zone_top * 3;
 
     //  console.log(`frame: 0 to ${vp_height}`);
 
@@ -75,28 +79,28 @@ const determine_focus = (event) => {
         const box = navigation.nodes[i].getBoundingClientRect();
         const pos = navigation.positions[i];
         
-        [pos.top, pos.bottom, pos.height_in_vp] = [box.top, box.bottom, 0];
+        [pos.top, pos.bottom, pos.px_in_zone] = [box.top, box.bottom, 0];
         // console.log(`pos[${i}] is ${pos.top}, ${pos.bottom}`);
         
-        if (pos.top < 0) {
-            if (pos.bottom > vp_height) {
-                pos.vp_factor = vp_height;
+        if (pos.top < zone_top) {
+            if (pos.bottom > zone_bottom) {
+                pos.px_in_zone = zone_bottom - zone_top;
             } else if (pos.bottom > 0) {
-                pos.height_in_vp = pos.bottom;
+                pos.px_in_zone = pos.bottom - zone_top;
             }
-        } else if (pos.top < vp_height) {
+        } else if (pos.top < zone_bottom) {
             // console.log(1);
-            if (pos.bottom < vp_height) {
+            if (pos.bottom < zone_bottom) {
                 // console.log(2);
-                pos.height_in_vp = pos.bottom - pos.top;
+                pos.px_in_zone = pos.bottom - pos.top;
             } else {
                 // console.log(3);
-                pos.height_in_vp = vp_height - pos.top;
+                pos.px_in_zone = zone_bottom - pos.top;
             }
         }
 
-        if (pos.height_in_vp > max) {
-            max = pos.height_in_vp;
+        if (pos.px_in_zone > max) {
+            max = pos.px_in_zone;
             max_index = i;
         }
         //Todo: optimise...
@@ -105,7 +109,7 @@ const determine_focus = (event) => {
     }
 
     if (navigation.index != max_index) {
-        console.log("activate this: " + max_index);
+        // console.log("activate this: " + max_index);
         navigation.nodes[navigation.index].classList.remove('your-active-class');
         navigation.index = max_index;
         navigation.nodes[max_index].classList.add('your-active-class')
@@ -118,11 +122,35 @@ const get_determine_focus = () => {
     return determine_focus;
 }
 
-// Add class 'active' to section when near top of viewport
 
+const handle_nav_click = (event) => {
+    //todo: check that target is link?
+    event.preventDefault();
+    console.log(`nav has been clicked ${event.target}`);
+    const index = event.target.dataset['index'];
+    console.log(`selects index: ${index}`);
 
-// Scroll to anchor ID using scrollTO event
+    // navigation.nodes[index].scrollIntoView(false, {behavior: 'auto'});
 
+    //hacky smooth scrolling 10 steps over 1 second
+    const distance = navigation.nodes[index].getBoundingClientRect()['top'] - 52;
+
+    //TODO: build ease-in-out algorithm.
+    const fps = 30;
+    const increment = Math.floor(distance / fps);
+    const interval = Math.floor(1000/fps);
+    let count = 0;
+
+    const smooth_scroll = () => {
+        window.scrollBy(0, increment, true, {behaviour: true});
+        count++;
+        if (count < divisions) {
+            setTimeout(smooth_scroll, interval);
+        }
+    }
+
+    smooth_scroll();
+}
 
 /**
  * End Main Functions
@@ -133,13 +161,13 @@ const get_determine_focus = () => {
 document.addEventListener('DOMContentLoaded', (event) => {
     
     // Build menu 
-    build_navigation();
+    const nav = build_navigation();
 
     // Scroll to section on link click
+    nav.addEventListener('click', handle_nav_click);
 
     // Set sections as active
     //TODO: optimise for performance
     window.addEventListener('scroll', determine_focus);
-    
-    
+   
 });

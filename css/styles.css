@@ -212,11 +212,13 @@ section.your-active-class {
 }
 
 section.your-active-class .landing__container::before {
+    border: 1px solid blue;
     opacity: 1;
     animation: rotate 4s linear 2s infinite forwards;
 }
 
 section.your-active-class .landing__container::after {
+    border: 1px solid green;
     opacity: 1;
     animation: rotate 5s linear 3s infinite forwards reverse;
 }
