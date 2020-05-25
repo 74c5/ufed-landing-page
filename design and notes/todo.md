@@ -1,3 +1,5 @@
+- [ ] stop catching clicks on non-menu areas
+
 - [x] figure out what the active animation is supposed to be doing?
 - [x] Switch active states based on who occupies most of the 50% at the middle of the screen...
         -- just scale every thing in.
