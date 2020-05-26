@@ -1,10 +1,10 @@
-- [ ] stop catching clicks on non-menu areas
+- [x] stop catching clicks on non-menu areas
 
 - [x] figure out what the active animation is supposed to be doing?
 - [x] Switch active states based on who occupies most of the 50% at the middle of the screen...
         -- just scale every thing in.
 
--   [ ] Add the functionality to scroll to sections. Clicking on a navigation item should scroll to the appropriate section of the page.
+-   [x] Add the functionality to scroll to sections. Clicking on a navigation item should scroll to the appropriate section of the page.
         Which event are you listening for (hint: you were just reading it)?
                 onclick - see if we can catch at the nav stage?
         There is a default event occurring that we need to stop. How?
@@ -14,6 +14,14 @@
                 - element.scrollintoView()
                 - window.scrollBy(0, <y>px);
                 - document.documentElement.scrollTo(0, 450);
+
+- [ ] add optimization for scroll checking...
+        - [x] prevent updates to focus during a menu triggered scroll event
+        - [x] only check every 1/4 screen of scroll - use a tick
+        - [ ] only evaluate the element above and below the current index
+
+- [ ] implement a resize event
+
 -   [ ] REFACTOR. At this point, your code should be working properly. Ideally, refactoring happens while you are developing, but as a new developer, you often don’t have the whole picture in your head to be able to do so properly. Let’s clean the project up.
         -- see optimization for scroll events, use timeout to 'tick' for checking page positions
            https://developer.mozilla.org/en-US/docs/Web/API/Element/scroll_event
