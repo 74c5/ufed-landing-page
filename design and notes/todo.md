@@ -1,30 +1,11 @@
-- [x] stop catching clicks on non-menu areas
+-   [x] REFACTOR. At this point, your code should be working properly. Ideally, refactoring happens while you are developing, but as a new developer, you often don’t have the whole picture in your head to be able to do so properly. Let’s clean the project up.
+  - [x] test
+  - [x] put in proper sections
 
-- [x] figure out what the active animation is supposed to be doing?
-- [x] Switch active states based on who occupies most of the 50% at the middle of the screen...
-        -- just scale every thing in.
-
--   [x] Add the functionality to scroll to sections. Clicking on a navigation item should scroll to the appropriate section of the page.
-        Which event are you listening for (hint: you were just reading it)?
-                onclick - see if we can catch at the nav stage?
-        There is a default event occurring that we need to stop. How?
-                need to suppress the jump following the #id in the link...
-        If you don’t recall how HTML page anchors work, read more to figure out which variables you should set.
-        There are several javascript methods for scrolling. Which seems like it may be the most simple?
-                - element.scrollintoView()
-                - window.scrollBy(0, <y>px);
-                - document.documentElement.scrollTo(0, 450);
-
-- [ ] add optimization for scroll checking...
-        - [x] prevent updates to focus during a menu triggered scroll event
-        - [x] only check every 1/4 screen of scroll - use a tick
-        - [ ] only evaluate the element above and below the current index
-
-- [ ] implement a resize event
-
--   [ ] REFACTOR. At this point, your code should be working properly. Ideally, refactoring happens while you are developing, but as a new developer, you often don’t have the whole picture in your head to be able to do so properly. Let’s clean the project up.
-        -- see optimization for scroll events, use timeout to 'tick' for checking page positions
-           https://developer.mozilla.org/en-US/docs/Web/API/Element/scroll_event
+- [ ] only trigger re-focus instead of hacking a forced scroll
+        - 
+- [ ] implement a resize event handler
+- [ ] add a scroll switch to sections 1...
 
 -   [ ] Have you run your code through a linter? We request you still follow Udacity standards when the code is complete, but running it through an eslinter is going to help you get started in refactoring.
         Are you using ES6 const and let?
@@ -46,6 +27,32 @@
 
         - alternate menu's: burger with - expanding to sub-categories
         - would really like to implement a slider style menu - with sections labels becoming visible on mouse-down
+
+
+## Day 4/5
+- [x] stop catching clicks on non-menu areas
+
+- [x] figure out what the active animation is supposed to be doing?
+- [x] Switch active states based on who occupies most of the 50% at the middle of the screen...
+        -- just scale every thing in.
+
+-   [x] Add the functionality to scroll to sections. Clicking on a navigation item should scroll to the appropriate section of the page.
+        Which event are you listening for (hint: you were just reading it)?
+                onclick - see if we can catch at the nav stage?
+        There is a default event occurring that we need to stop. How?
+                need to suppress the jump following the #id in the link...
+        If you don’t recall how HTML page anchors work, read more to figure out which variables you should set.
+        There are several javascript methods for scrolling. Which seems like it may be the most simple?
+                - element.scrollintoView()
+                - window.scrollBy(0, <y>px);
+                - document.documentElement.scrollTo(0, 450);
+        -- see optimization for scroll events, use timeout to 'tick' for checking page positions
+           https://developer.mozilla.org/en-US/docs/Web/API/Element/scroll_event
+
+- [x] add optimization for scroll checking...
+        - [x] prevent updates to focus during a menu triggered scroll event
+        - [x] only check every 1/4 screen of scroll - use a tick
+        - [x] only evaluate the element above and below the current index
 
 
 ## Day 2
