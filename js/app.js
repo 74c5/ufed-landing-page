@@ -335,7 +335,7 @@ const handle_scroll = (event) => {
 
     //The vertical window range is 0..vp_height
     const height = document.documentElement.clientHeight;
-    const top    = document.documentElement.scrollTop;
+    const top    = document.documentElement.scrollTop;    //todo: use getBoundingClientRect -- for actual top position
     const threshold = Math.floor(height / 4);
 
     if (height != tracker.viewport.height) {
