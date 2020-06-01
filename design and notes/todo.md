@@ -2,8 +2,14 @@
   - [x] test
   - [x] put in proper sections
 
-- [ ] only trigger re-focus instead of hacking a forced scroll
-        - 
+- [ ] build independent objects
+        - [x] demo scroller
+        - [ ] build out scroller object
+                - [ ] scrollTo (pos) instead of scrollby
+                - [ ] move to object
+                - [ ] enums for mode [user, auto/cmd]
+                - [ ] enums for method [intoview?, auto, smooth, custom]
+
 - [ ] implement a resize event handler
 - [ ] add a scroll switch to sections 1...
 
