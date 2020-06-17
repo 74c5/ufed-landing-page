@@ -1,0 +1,22 @@
+{
+  "name": "udacity-fend-landing-page",
+  "version": "1.0.0",
+  "description": "Landing page project for Udacity Front End Developer Nanodegree",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/74c5/ufed-landing-page.git"
+  },
+  "author": "Damian Hawes",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/74c5/ufed-landing-page/issues"
+  },
+  "homepage": "https://github.com/74c5/ufed-landing-page#readme",
+  "devDependencies": {
+    "eslint": "^7.2.0"
+  }
+}
