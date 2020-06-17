@@ -28,8 +28,41 @@
     The first section is set to active class by default -->
     <section id="section1" data-nav="S 1" class="">
       <div class="landing__container">
-        <h2>Section 1</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi fermentum metus faucibus lectus pharetra dapibus. Suspendisse potenti. Aenean aliquam elementum mi, ac euismod augue. Donec eget lacinia ex. Phasellus imperdiet porta orci eget mollis. Sed convallis sollicitudin mauris ac tincidunt. Donec bibendum, nulla eget bibendum consectetur, sem nisi aliquam leo, ut pulvinar quam nunc eu augue. Pellentesque maximus imperdiet elit a pharetra. Duis lectus mi, aliquam in mi quis, aliquam porttitor lacus. Morbi a tincidunt felis. Sed leo nunc, pharetra et elementum non, faucibus vitae elit. Integer nec libero venenatis libero ultricies molestie semper in tellus. Sed congue et odio sed euismod.</p>
+        <h2>Scrolling Modes</h2>
+        <p>Here we have a choice of 3 scrolling modes:</p>
+        <ul>
+          <li>Auto: Uses 'window.scrollBy' function with scroll option '{behavior: "auto"}' to scroll after a nav click. 
+              This should result in a near instantaneous jump to the target section.
+          </li>
+          <li>Smooth: Uses 'window.scrollBy' function with scroll option '{behavior: "smooth"}' to scroll from the nav.
+              This would be the 'default' way to achieve scrolling in an app.
+          </li>
+          <li>Custom: Utilises a custom built method to scroll. Initially, this was built because I hadn't figured out a
+              way to disable the scroll event handler reliably during a menu commanded scroll. I kept it because it allows
+              more fine grained control over the the scroll. Also, smooth scrolling seems to sometimes glitch for me.
+              I've followed an ease-in-out approach; starting the scroll slowly
+              for the first frame and then accelerating (bigger jumps per frame) towards the middle and then slowing down again.
+              There is still some work to be done to make the underlying code production ready - but it was an interesting
+              exercise.
+          </li>
+          <li>scrollIntoView: Uses the experimental Html.scrollIntoView method. Not production code, but was the first method I played with.
+              Not considered suitable, because it does not allow for adding an offset to the scroll amount - so the top of the element will
+              be hidden under the nav bar. Interesting, because it is the simplest of the methods; it can be called on the target
+              element directly.
+          </li>
+
+          <form id="scroll__select" action="">
+            <p>Please select a scroll type:</p>
+            <input type="radio" name="scroll_type" id="auto" value="auto">
+            <label for="auto">Auto Scroll</label><br>
+            <input type="radio" name="scroll_type" id="smooth" value="smooth">
+            <label for="smooth">Smooth Scroll</label><br>
+            <input type="radio" name="scroll_type" id="custom" value="custom" checked>
+            <label for="custom">Custom Scroll</label><br>
+            <input type="radio" name="scroll_type" id="intoView" value="intoView">
+            <label for="intoView">Scroll into View</label><br>
+          </form>
+        </ul>
 
         <p>Aliquam a convallis justo. Vivamus venenatis, erat eget pulvinar gravida, ipsum lacus aliquet velit, vel luctus diam ipsum a diam. Cras eu tincidunt arcu, vitae rhoncus purus. Vestibulum fermentum consectetur porttitor. Suspendisse imperdiet porttitor tortor, eget elementum tortor mollis non.</p>
       </div>

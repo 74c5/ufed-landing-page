@@ -44,4 +44,48 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
     // resets
     tracky.reset();
+
+
+    // trigger a focus refresh for page resizes
+    // TODO: 
+    //  this sort of works... sometimes results in two sections activated
+    //  perhaps need to try deactivating scroll during a resize.
+    window.addEventListener('resize', (e) => {
+        tracky.reset();
+    });
+
+    // scroll selection code
+    const select = document.querySelector("#scroll__select");
+    const radios = document.querySelectorAll('input[name=scroll_type]');
+    console.log(radios);
+
+    const formClick = (e) => {
+        let selected = undefined;
+        for (let i=0; i<radios.length; i++) {
+            if (radios[i].checked) {
+                selected = radios[i].value;
+                break;
+            }
+        }
+        switch (selected) {
+            case 'auto':
+                scrolly.mode = SCROLL_MODE.auto;
+                break;
+            case 'smooth':
+                scrolly.mode = SCROLL_MODE.smooth;
+                break;
+            case 'custom':
+                scrolly.mode = SCROLL_MODE.custom;
+                break;
+            case 'intoView':
+                scrolly.mode = SCROLL_MODE.intoView;
+                break;
+            default:
+                break;
+        }
+    };
+
+    select.addEventListener('click', formClick);
+    // call to select default method from html
+    formClick();
 });

@@ -20,14 +20,14 @@
  */
 function Scroller() {
     this.mode        = SCROLL_MODE.custom; // current mode of scroll
-    this.target      = 1;                  // destination value for commanded scroll
-    this.threshold   = 2;                  // Disable event blocking when within threshold of target
+    this.target      = 0;                  // destination value for commanded scroll
+    this.threshold   = 1;                  // Disable event blocking when within threshold of target
     this.timeout     = 5000;               // timeout before events will be handled again
     this.blockEvents = false;              // a commanded scroll is in progress
     this.callbacks   = [];                 // callback functions to execute in handler
 }
 
-const SCROLL_MODE = {smooth: 1, custom: 2, intoView: 3 };
+const SCROLL_MODE = {auto: 1, smooth: 2, custom: 4, intoView: 8 };
 
 /** 
  * call back for scroll event to determine which section is active 
@@ -66,6 +66,10 @@ Scroller.prototype.scroll = function(target, source=null) {
     // console.log(`scrolling to ${this.target} from ${top}`);
 
     switch (this.mode) {
+        case SCROLL_MODE.auto:
+            window.scrollBy({left: 0, top: delta, behavior: 'auto' });
+            break;
+
         case SCROLL_MODE.smooth:
             window.scrollBy({left: 0, top: delta, behavior: 'smooth' });
             break;

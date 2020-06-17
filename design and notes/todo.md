@@ -2,16 +2,16 @@
   - [x] test
   - [x] put in proper sections
 
-- [ ] build independent objects
+- [x] build independent objects
         - [x] demo scroller
-        - [ ] build out scroller object
-                - [ ] scrollTo (pos) instead of scrollby
-                - [ ] move to object
-                - [ ] enums for mode [user, auto/cmd]
-                - [ ] enums for method [intoview?, auto, smooth, custom]
+        - [x] build out scroller object
+                - [x] scrollTo (pos) instead of scrollby
+                - [x] move to object
+                - [x] enums for mode [user, auto/cmd]
+                - [x] enums for method [intoview?, auto, smooth, custom]
 
-- [ ] implement a resize event handler
-- [ ] add a scroll switch to sections 1...
+- [x] implement a resize event handler
+- [x] add a scroll switch to sections 1...
 
 -   [ ] Have you run your code through a linter? We request you still follow Udacity standards when the code is complete, but running it through an eslinter is going to help you get started in refactoring.
         Are you using ES6 const and let?
