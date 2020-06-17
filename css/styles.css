@@ -8,16 +8,18 @@
  *
 */
 
-
 /* ---- Base Rules ---- */
 body {
-    background: rgb(136,203,171);
-    background: linear-gradient(0deg, rgba(136,203,171,1) 0%, rgba(0,13,60,1) 100%);
+    background: rgb(136, 203, 171);
+    background: linear-gradient(
+        0deg,
+        rgba(136, 203, 171, 1) 0%,
+        rgba(0, 13, 60, 1) 100%
+    );
     margin: 0;
-    font-family: 'Merriweather', serif;
+    font-family: "Merriweather", serif;
     color: #fff;
 }
-
 
 /* ---- utility classes ---- */
 .hidden {
@@ -28,14 +30,14 @@ body {
     opacity: 0;
 }
 
-/* Typeography General*/
+/* Typography General*/
 h1 {
-    font-family: 'Fira Sans', sans-serif;
+    font-family: "Fira Sans", sans-serif;
     font-size: 3em;
     margin: 2em 1rem;
 }
 
-@media only screen and (min-width: 35em){
+@media only screen and (min-width: 35em) {
     h1 {
         font-size: 7em;
         margin: 2em 4rem 1em;
@@ -44,7 +46,7 @@ h1 {
 
 h2 {
     border-bottom: 1px solid #cc1;
-    font-family: 'Oxygen', Sans-Serif;
+    font-family: "Oxygen", Sans-Serif;
     font-size: 3em;
     color: #fff;
 }
@@ -70,7 +72,6 @@ section {
     min-height: 80vh;
     box-sizing: border-box;
 }
-
 
 /* ---- Module Rules ---- */
 
@@ -118,10 +119,9 @@ section {
     color: #fff;
 }
 
-.page__footer p{
+.page__footer p {
     color: #fff;
 }
-
 
 /* ---- Theme Rules ---- */
 /* Landing Container Styles */
@@ -130,7 +130,7 @@ section {
     text-align: left;
 }
 
-@media only screen and (min-width: 35em){
+@media only screen and (min-width: 35em) {
     .landing__container {
         max-width: 50em;
         padding: 4em;
@@ -140,14 +140,14 @@ section {
 section:nth-of-type(even) .landing__container {
     margin-right: 0;
     margin-left: auto;
-    text-align: right; 
+    text-align: right;
 }
 
 /* Background Circles */
 /* Note that background circles are created with psuedo elements before and after */
 /* Circles appear to be random do to use of :nth-of-type psuedo class */
 section:nth-of-type(odd) .landing__container::before {
-    content: '';
+    content: "";
     background: rgba(255, 255, 255, 0.187);
     position: absolute;
     z-index: -5;
@@ -159,9 +159,13 @@ section:nth-of-type(odd) .landing__container::before {
 }
 
 section:nth-of-type(even) .landing__container::before {
-    content: '';
-    background: rgb(255,255,255);
-    background: linear-gradient(0deg, rgba(255,255,255,.1) 0%, rgba(255,255,255,.2) 100%);
+    content: "";
+    background: rgb(255, 255, 255);
+    background: linear-gradient(
+        0deg,
+        rgba(255, 255, 255, 0.1) 0%,
+        rgba(255, 255, 255, 0.2) 100%
+    );
     position: absolute;
     top: 3em;
     right: 3em;
@@ -174,9 +178,13 @@ section:nth-of-type(even) .landing__container::before {
 }
 
 section:nth-of-type(3n) .landing__container::after {
-    content: '';
-    background: rgb(255,255,255);
-    background: linear-gradient(0deg, rgba(255,255,255,.1) 0%, rgba(255,255,255,.2) 100%);
+    content: "";
+    background: rgb(255, 255, 255);
+    background: linear-gradient(
+        0deg,
+        rgba(255, 255, 255, 0.1) 0%,
+        rgba(255, 255, 255, 0.2) 100%
+    );
     position: absolute;
     right: 0;
     bottom: 0;
@@ -189,9 +197,13 @@ section:nth-of-type(3n) .landing__container::after {
 }
 
 section:nth-of-type(3n + 1) .landing__container::after {
-    content: '';
-    background: rgb(255,255,255);
-    background: linear-gradient(0deg, rgba(255,255,255,.1) 0%, rgba(255,255,255,.2) 100%);
+    content: "";
+    background: rgb(255, 255, 255);
+    background: linear-gradient(
+        0deg,
+        rgba(255, 255, 255, 0.1) 0%,
+        rgba(255, 255, 255, 0.2) 100%
+    );
     position: absolute;
     right: 20vw;
     bottom: -5em;
@@ -203,42 +215,45 @@ section:nth-of-type(3n + 1) .landing__container::after {
     transition: ease 0.5s all;
 }
 
-
 /* ---- Theme State Rules ---- */
 /* Section Active Styles */
-/* Note: your-active-class class is applied through javascript. You should update the class here and in the index.html to what you set in your javascript file.  */
-.main__hero.your-active-class {
+/* Note: your-active-class class is applied through javascript.
+   You should update the class here and in the index.html to what you set in your javascript file.  */
+.main__hero.active-section {
     /* text-shadow: 0 0 25px green; */
     animation: pulse 5s infinite;
     border: 1px solid red;
 }
 
-
 @keyframes pulse {
     0% {
-      text-shadow: 0 0 25px rgba(255, 0, 0);
+        text-shadow: 0 0 25px rgba(255, 0, 0);
     }
     50% {
-      text-shadow: 0 0 25px rgb(0, 255, 0);
+        text-shadow: 0 0 25px rgb(0, 255, 0);
     }
     100% {
         text-shadow: 0 0 25px rgba(255, 0, 0);
     }
-  }
-
-section.your-active-class {
-    border: 1px solid red;
-    background: rgb(0, 0, 0);
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 100%);
 }
 
-section.your-active-class .landing__container::before {
+section.active-section {
+    border: 1px solid red;
+    background: rgb(0, 0, 0);
+    background: linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.1) 0%,
+        rgba(0, 0, 0, 0) 100%
+    );
+}
+
+section.active-section .landing__container::before {
     border: 1px solid blue;
     opacity: 1;
     animation: rotate 4s linear 2s infinite forwards;
 }
 
-section.your-active-class .landing__container::after {
+section.active-section .landing__container::after {
     border: 1px solid green;
     opacity: 1;
     animation: rotate 5s linear 3s infinite forwards reverse;
@@ -246,14 +261,15 @@ section.your-active-class .landing__container::after {
 
 /* Section Active Styles Keyframe Animations */
 @keyframes rotate {
-	from {
-		transform: rotate(0deg)
-		           translate(-1em)
-		           rotate(0deg);
-	}
-	to {
-		transform: rotate(360deg)
-		           translate(-1em) 
-		           rotate(-360deg);
-	}
+    from {
+        transform: rotate(0deg) translate(-1em) rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg) translate(-1em) rotate(-360deg);
+    }
+}
+
+.active-menu-link {
+    color: #333;
+    text-shadow: 0 0 3px red;
 }

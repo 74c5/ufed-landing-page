@@ -48,16 +48,19 @@ export class Nav {
 
         nav_list.innerHTML = nav_html;
 
-        this.navbar.classList.remove("invisible"); // nav should be hidden until it is built
+        this.navbar.classList.remove('invisible'); // nav should be hidden until it is built
 
-        return this.elements;
+        return {
+            nav     : document.querySelectorAll('.menu__link'),
+            elements: this.elements
+        };
     }
 
     /** Handles the clicks on the nav menu */
     //      hacky private instance method - ES2019 #handler
     _handler() {
         // only clicks on menu links. i.e. ignore clicks on the parent div
-        if (!event.target.classList.contains("menu__link")) return;
+        if (!event.target.classList.contains('menu__link')) return;
 
         event.preventDefault(); // prevent std link jump
 

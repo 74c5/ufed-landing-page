@@ -36,8 +36,8 @@ document.addEventListener("DOMContentLoaded", (event) => {
     navvy = new Nav();
     scrolly = new Scroller();
 
-    const elements = navvy.build();
-    tracky = Tracker(elements); // see file for why new is not used
+    const items = navvy.build();
+    tracky = Tracker(items); // see file for why new is not used
 
     // wire them up
     navvy.onClick = scrolly.scroll.bind(scrolly);

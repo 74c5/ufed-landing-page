@@ -20,12 +20,12 @@
  *      tracker.update();
  *
  */
-export const Tracker = (elements) => {
+export const Tracker = (items) => {
     // private fields
     let index = -1; // index of currently active element
     const viewport = { top: 0, height: 0 }; // snapshot of several viewport parameters,
     //    used to improve performance during update
-    const tracked = elements; // list of tracked elements
+    const tracked = items; // list of tracked elements
 
     /**
      * Returns the number of vertical pixels of an element withing the specified target zone.
@@ -82,8 +82,8 @@ export const Tracker = (elements) => {
 
         let max_index = index;
         let max = 0;
-        if (tracked[max_index]) {
-            max = get_pixels_in_zone(tracked[max_index], zone_top, zone_bottom);
+        if (tracked.elements[max_index]) {
+            max = get_pixels_in_zone(tracked.elements[max_index], zone_top, zone_bottom);
         }
         let i_up = max_index - 1,
             i_down = max_index + 1;
@@ -95,10 +95,10 @@ export const Tracker = (elements) => {
         // - we have a reason to expect there will be an element that takes up a significant portion
         //   of the target zone
         // - there are still elements to evaluate
-        while (total < 0.9 * range && (i_up >= 0 || i_down < tracked.length)) {
+        while (total < 0.9 * range && (i_up >= 0 || i_down < tracked.elements.length)) {
             if (i_up >= 0) {
                 const up_in_zone = get_pixels_in_zone(
-                    tracked[i_up],
+                    tracked.elements[i_up],
                     zone_top,
                     zone_bottom
                 );
@@ -107,9 +107,9 @@ export const Tracker = (elements) => {
                 i_up--;
             }
 
-            if (i_down < tracked.length) {
+            if (i_down < tracked.elements.length) {
                 const down_in_zone = get_pixels_in_zone(
-                    tracked[i_down],
+                    tracked.elements[i_down],
                     zone_top,
                     zone_bottom
                 );
@@ -121,10 +121,12 @@ export const Tracker = (elements) => {
 
         // process a change in active element
         if (index != max_index) {
-            if (tracked[index]) {
-                tracked[index].classList.remove("your-active-class");
+            if (tracked.elements[index]) {
+                tracked.elements[index].classList.remove("active-section");
+                tracked.nav[index].classList.remove("active-menu-link");
             }
-            tracked[max_index].classList.add("your-active-class");
+            tracked.elements[max_index].classList.add("active-section");
+            tracked.nav[max_index].classList.add("active-menu-link");
             index = max_index;
         }
     };
