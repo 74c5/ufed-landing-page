@@ -3,30 +3,35 @@
 /**
  * Builds a basic nav based on data in section attributes
  * Calls external onClick function when it detects a click on a link.
- * 
+ *
  * Initialisation:
  *      const nav = Nav();
  *      nav.build();
  *      nav.onClick = some_func;
  *      nav.register;
- * 
+ *
  * Usage;
  *      (none)
  */
 export class Nav {
     constructor() {
-        this.navbar   = null;   // reference to top level nav element
-        this.elements = [];     // list of page elements references by the nav
-        this.onClick  = null;   // function called on a click, signature 'function(target: htmlElement, navbar: htmlElement)'
-                                // TODO: could be separated into onClickScroll, onClickOpen, onClickDisplay for multi-page/multifunction menu
+        // reference to top level nav element
+        this.navbar = null;
+        // list of page elements referenced by the nav
+        this.elements = [];
+        // function called on a click
+        //   signature 'function(target: htmlElement, navbar: htmlElement)'
+        this.onClick = null;
+        // TODO: could be separated into onClickScroll, onClickOpen,
+        // onClickDisplay for multi-page/multifunction menu
     }
 
     /**
-     * Builds the navigation menu and populates the 'navigation' global object 
+     * Builds the navigation menu and populates the 'navigation' global object
      */
     build() {
         this.navbar = document.querySelector(".navbar__menu");
-        this.navbar.classList.add("invisible");         // nav should be hidden until it is built
+        this.navbar.classList.add("invisible"); // nav should be hidden until it is built
 
         const nav_list = document.querySelector("#navbar__list");
         const hero = document.querySelector(".main__hero");
@@ -42,9 +47,9 @@ export class Nav {
         }
 
         nav_list.innerHTML = nav_html;
-        
-        this.navbar.classList.remove("invisible");      // nav should be hidden until it is built
-        
+
+        this.navbar.classList.remove("invisible"); // nav should be hidden until it is built
+
         return this.elements;
     }
 
@@ -52,10 +57,10 @@ export class Nav {
     //      hacky private instance method - ES2019 #handler
     _handler() {
         // only clicks on menu links. i.e. ignore clicks on the parent div
-        if (!event.target.classList.contains('menu__link')) return;
-        
-        event.preventDefault();         // prevent std link jump
-    
+        if (!event.target.classList.contains("menu__link")) return;
+
+        event.preventDefault(); // prevent std link jump
+
         const index = Number(event.target.dataset["index"]);
         if (this.onClick) {
             this.onClick(this.elements[index], this.navbar);
@@ -64,8 +69,7 @@ export class Nav {
         }
     }
 
-
     register() {
-        document.addEventListener('click', this._handler.bind(this));
+        document.addEventListener("click", this._handler.bind(this));
     }
 }

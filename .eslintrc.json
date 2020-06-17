@@ -9,5 +9,7 @@
         "sourceType": "module"
     },
     "rules": {
+        "no-trailing-spaces": 2,
+        "semi": ["error", "always"]
     }
 }
