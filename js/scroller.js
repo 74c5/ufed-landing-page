@@ -103,9 +103,9 @@ Scroller.prototype.scroll = function(target, source=null) {
  * @param {Number} offset       Number of pixels from top of frame that the element should be at end of scroll
  * @param {Number} fps          Frames per second, used to calculate the update rate for scrolling
  * @param {Number} start_inc    scroll increment for the first frame
- * @param {Number} mult         Each subsequent frame should be this factor of the previous frame's scroll amount 
+ * @param {Number} multiplier   Each subsequent frame should be this factor of the previous frame's scroll amount 
  */
-Scroller.prototype._scrollCustom = function (delta, fps=20, start_inc=15, mult=1.6) {
+Scroller.prototype._scrollCustom = function (delta, fps=20, start_inc=15, multiplier=1.6) {
 
     const halfway   = Math.round(Math.abs(delta)/2);
     const distance  = halfway*2;
@@ -133,7 +133,7 @@ Scroller.prototype._scrollCustom = function (delta, fps=20, start_inc=15, mult=1
         
         } else {        // accelerate
             const dist_to_half = Math.round(halfway - traveled);
-            const next_inc     = Math.ceil(increment*mult);
+            const next_inc     = Math.ceil(increment*multiplier);
 
             if (dist_to_half > next_inc) {      // next increment will not overflow halfway
                 increment = next_inc;       

@@ -49,7 +49,7 @@
                 need to suppress the jump following the #id in the link...
         If you don’t recall how HTML page anchors work, read more to figure out which variables you should set.
         There are several javascript methods for scrolling. Which seems like it may be the most simple?
-                - element.scrollintoView()
+                - element.scrollIntoView()
                 - window.scrollBy(0, <y>px);
                 - document.documentElement.scrollTo(0, 450);
         -- see optimization for scroll events, use timeout to 'tick' for checking page positions

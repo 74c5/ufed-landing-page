@@ -20,7 +20,7 @@
 
 let navvy   = null;
 let scrolly = null;
-let tracky  = null;
+let tracky  = null
 
 
 /**
