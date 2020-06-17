@@ -20,6 +20,7 @@ To view project, either, clone project and open _index.html_ or open github host
 ## Project Structure
 
 - index.html (base webpage)
+- css/styles.css (documents css including active styles)
 - js/app.js (main application javascript file)
 - js/nav.js (module which creates page nav and links)
 - js/tracker.js (module which highlights currently active section, based on percentage of viewport spanned)
