@@ -13,12 +13,12 @@
  * Usage;
  *      (none)
  */
-class Nav {
+export class Nav {
     constructor() {
         this.navbar   = null;   // reference to top level nav element
         this.elements = [];     // list of page elements references by the nav
         this.onClick  = null;   // function called on a click, signature 'function(target: htmlElement, navbar: htmlElement)'
-                                // TODO: could be separated into onClickScroll, onClickOpen, onClickDisplay for multipage/multfunction menu
+                                // TODO: could be separated into onClickScroll, onClickOpen, onClickDisplay for multi-page/multifunction menu
     }
 
     /**
@@ -46,7 +46,7 @@ class Nav {
         this.navbar.classList.remove("invisible");      // nav should be hidden until it is built
         
         return this.elements;
-    };
+    }
 
     /** Handles the clicks on the nav menu */
     //      hacky private instance method - ES2019 #handler

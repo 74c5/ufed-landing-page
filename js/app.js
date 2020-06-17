@@ -1,3 +1,7 @@
+import { Nav } from './nav.js';
+import { Scroller, SCROLL_MODE } from './scroller.js';
+import { Tracker } from './tracker.js';
+
 /**
  *
  * Manipulating the DOM exercise.
@@ -17,7 +21,9 @@
  * Define Global Variables
  *
  */
-
+//NOTE: 
+//  hide these in event listener for production code.
+//  kept here to enable debug in console.
 let navvy   = null;
 let scrolly = null;
 let tracky  = null
@@ -50,16 +56,15 @@ document.addEventListener("DOMContentLoaded", (event) => {
     // TODO: 
     //  this sort of works... sometimes results in two sections activated
     //  perhaps need to try deactivating scroll during a resize.
-    window.addEventListener('resize', (e) => {
+    window.addEventListener('resize', (event) => {
         tracky.reset();
     });
 
     // scroll selection code
     const select = document.querySelector("#scroll__select");
     const radios = document.querySelectorAll('input[name=scroll_type]');
-    console.log(radios);
 
-    const formClick = (e) => {
+    const formClick = (event) => {
         let selected = undefined;
         for (let i=0; i<radios.length; i++) {
             if (radios[i].checked) {

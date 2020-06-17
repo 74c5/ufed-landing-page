@@ -22,9 +22,10 @@
         Add additional sections to your HTML document. See how the navigation builds.
         Test the performance. The performance of your page can be affected by how you write your javascript as well as where you load your javascript.
         Test loading the javascript in the head vs at the end of the body. What issues arise? Is there a way to still load in the head without breaking the page? What is the performance like compared to loading at the end of the body?
+        - app.js loads earlier - in parallel with initial fonts
 
 - [ ] Suggested:
-        Add an active state to your navigation items when a section is in the viewport.
+        - [x] Add an active state to your navigation items when a section is in the viewport.
         Hide fixed navigation bar while not scrolling (it should still be present on page load).
         Hint: setTimeout can be used to check when the user is no longer scrolling.
         Add a scroll to top button on the page that’s only visible when the user scrolls below the fold of the page.
@@ -32,8 +33,7 @@
         Make sections collapsible.
 
         - alternate menu's: burger with - expanding to sub-categories
-        - would really like to implement a slider style menu - with sections labels becoming visible on mouse-down
-
+        - future idea: slide-out overlay style menu, where you drag a button up and down - sections labels becoming visible at fixed points and or mouse-down
 
 ## Day 4/5
 - [x] stop catching clicks on non-menu areas

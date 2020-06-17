@@ -82,7 +82,7 @@ Scroller.prototype.scroll = function(target, source=null) {
             // scrolling using experimental scrollIntoView function
             //   https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView
             //   does not allow for offset at top for menu
-            element.scrollIntoView({behavior: 'smooth', block: 'start'});
+            target.scrollIntoView({behavior: 'smooth', block: 'start'});
             break;
     }
     // Safety: re-enable the scroll handler after timeout period.
@@ -194,3 +194,5 @@ Scroller.prototype._scrollCustom = function (delta, fps=20, start_inc=15, multip
     //trigger scrolling
     my_scroll();
 }
+
+export { Scroller, SCROLL_MODE };

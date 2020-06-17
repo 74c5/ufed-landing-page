@@ -1,5 +1,5 @@
 // I'm not sure where I first saw this design pattern.
-// It seems a bit of a BLC of IIFE's (in way) and java factories.
+// It seems a bit of a BLC of IIFEs (in way) and java factories.
 // Use a self contained 'constructor' function - and closures for private data/methods. 
 // Is appealing for front end design because it doesn't mess all over global state.
 // - syntactic sugar for classes (new, this, prototype)
@@ -20,7 +20,7 @@
  *      tracker.update();
  *      
  */
-const Tracker = (elements) => {
+export const Tracker = (elements) => {
     // private fields
     let   index    = -1;                  // index of currently active element
     const viewport = {top: 0, height: 0}; // snapshot of several viewport parameters, 
@@ -41,7 +41,7 @@ const Tracker = (elements) => {
             }
         } else if (box.top < zone_bottom) {       // starts between top and bottom
             if (box.bottom < zone_bottom) {       // element span within zone
-                return box.bottom - pos.top;
+                return box.bottom - box.top;
             } else {
                 return zone_bottom - box.top;     // element stretches past bottom
             } 
