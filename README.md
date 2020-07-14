@@ -15,7 +15,13 @@ Project files Landing Page Website module of Udacity Nano-degree: [Font End Web 
 
 ## Usage
 
-To view project, either, clone project and open _index.html_ or open github hosted [page](https://74c5.github.io/ufed-landing-page/).
+To view project, either:
+- open github hosted [page](https://74c5.github.io/ufed-landing-page/)
+- clone project and host the root folder (e.g. use a local development server like liveserver in VS Code or similar).
+
+NOTE:
+Opening the root level _index.html_ locally fails, because the access to the 'app.js' module, using the file protocol, 
+is blocked by the CORS policy of modern browsers. i.e. the browser seems to expect the that js modules are always hosted.
 
 ## Project Structure
 
